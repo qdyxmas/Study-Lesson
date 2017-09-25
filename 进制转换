@@ -1,0 +1,14 @@
+#coding=utf8
+def  dec2bin(num):
+    lst = []
+    while True:
+        yushu = num%2
+        lst.append("%d" %(yushu))
+        if num <2:
+            break
+        else:
+            num = num//2
+    print "".join(lst[::-1])
+if __name__ == "__main__":
+    dec2bin(100)
+    
