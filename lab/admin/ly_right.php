@@ -5,7 +5,7 @@ require_once('ly_check.php');
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>Tendaʵ������������ϵͳv0.1</title>
+<title>Tenda实验室样机管理系统v0.1</title>
 <style type="text/css">
 <!--
 body {
@@ -52,7 +52,7 @@ date_default_timezone_set("Etc/GMT-8");
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="6%" height="19" valign="bottom"><div align="center"><img src="images/tb.gif" width="14" height="14" /></div></td>
-                <td width="94%" valign="bottom"><span class="STYLE1"> �������йز���</span></td>
+                <td width="94%" valign="bottom"><span class="STYLE1"> 服务器有关参数</span></td>
               </tr>
             </table></td>
             <td><div align="right"><span class="STYLE1">&nbsp;</span><span class="STYLE1"> &nbsp;</span></div></td>
@@ -65,48 +65,48 @@ date_default_timezone_set("Etc/GMT-8");
     <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8c7ce">
       
       <tr>
-        <td height="20" align="left" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">�����汾</span></div></td>
-        <td height="20" align="center" bgcolor="#FFFFFF" class="STYLE19"><!--ɾ�����޷�������°汾--><script type="text/javascript" src="http://www.04ie.com/net/phpbook0_3.js"></script></td>
+        <td height="20" align="left" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">软件版本</span></div></td>
+        <td height="20" align="center" bgcolor="#FFFFFF" class="STYLE19"><!--删除后将无法获得最新版本--><script type="text/javascript" src="http://www.04ie.com/net/phpbook0_3.js"></script></td>
       </tr>
       <tr>
-        <td width="23%" height="20" align="left" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">php�汾</span></div></td>
+        <td width="23%" height="20" align="left" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">php版本</span></div></td>
         <td width="77%" height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><?php echo "PHP".PHP_VERSION; ?></div></td>
         </tr>
       <tr>
-        <td height="20" align="left" bgcolor="#FFFFFF" class="STYLE19"><div align="center">MYSQL�汾��</div></td>
+        <td height="20" align="left" bgcolor="#FFFFFF" class="STYLE19"><div align="center">MYSQL版本：</div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><?php echo mysql_get_server_info(); ?></div></td>
         </tr>
       <tr>
-        <td height="20" align="left" bgcolor="#FFFFFF" class="STYLE19"><div align="center">����������</div></td>
+        <td height="20" align="left" bgcolor="#FFFFFF" class="STYLE19"><div align="center">服务器名：</div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><?php echo $_SERVER['SERVER_NAME']; ?></div></td>
         </tr>
       <tr>
-        <td height="20" align="left" bgcolor="#FFFFFF" class="STYLE19"><div align="center">������IP��</div></td>
+        <td height="20" align="left" bgcolor="#FFFFFF" class="STYLE19"><div align="center">服务器IP：</div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><?php echo $_SERVER["HTTP_HOST"]; ?></div></td>
         </tr>
       <tr>
-        <td height="20" align="left" bgcolor="#FFFFFF" class="STYLE19"><div align="center">�������˿ڣ�</div></td>
+        <td height="20" align="left" bgcolor="#FFFFFF" class="STYLE19"><div align="center">服务器端口：</div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><?php echo $_SERVER["SERVER_PORT"]; ?></div></td>
         </tr>
       <tr>
-        <td height="20" align="left" bgcolor="#FFFFFF" class="STYLE19"><div align="center">������ʱ�䣺</div></td>
+        <td height="20" align="left" bgcolor="#FFFFFF" class="STYLE19"><div align="center">服务器时间：</div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><?php echo $showtime=date("Y-m-d H:i:s");?></div></td>
         </tr>
       <tr>
-        <td height="20" align="left" bgcolor="#FFFFFF" class="STYLE19"><div align="center">����������ϵͳ��</div></td>
+        <td height="20" align="left" bgcolor="#FFFFFF" class="STYLE19"><div align="center">服务器操作系统：</div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><?php echo PHP_OS; ?></div></td>
         </tr>
       <tr>
-        <td height="20" align="left" bgcolor="#FFFFFF" class="STYLE19"><div align="center">վ������·����</div></td>
+        <td height="20" align="left" bgcolor="#FFFFFF" class="STYLE19"><div align="center">站点物理路径：</div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><?php echo $_SERVER["DOCUMENT_ROOT"]; ?></div></td>
         </tr>
       <tr>
         <td height="20" align="left" bgcolor="#FFFFFF" class="STYLE19"><div align="center">admin</div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">ϵͳ����Ա</div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">系统管理员</div></td>
       </tr>
       <tr>
-        <td height="20" align="left" bgcolor="#FFFFFF" class="STYLE19"><div align="center">����ʹ�ð���</div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><a href="http://www.04ie.com/codes/700.html" target="_blank">�鿴���߰����ĵ�</a></div></td>
+        <td height="20" align="left" bgcolor="#FFFFFF" class="STYLE19"><div align="center">在线使用帮助</div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><a href="https://github.com/qdyxmas/Study-Lesson/blob/master/lab" target="_blank">查看在线帮助文档</a></div></td>
       </tr>
     </table></td>
   </tr>
