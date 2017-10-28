@@ -2,13 +2,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>TendaÊµÑéÊÒÑù»ú¹ÜÀíÏµÍ³v0.1</title>
+<title>Tendaå®éªŒå®¤æ ·æœºç®¡ç†ç³»ç»Ÿv0.1</title>
 <link href="images/css.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <?php
 $password=$_SESSION["pwd"];
-$sql="select * from admin where password='$password'";
+$sql="select * from users where password='$password'";
 $rs=mysql_query($sql);
 $rows=mysql_fetch_assoc($rs);
 if($_POST["Submit"])
@@ -16,9 +16,9 @@ if($_POST["Submit"])
 if($rows["password"]==$_POST["password"])
 		{
 		$password2=$_POST["password2"];
-        $sql="update admin set password='$password2' where id=1";
+        $sql="update users set password='$password2' where id=1";
 		mysql_query($sql);
-		echo "<script language=javascript>alert('ĞŞ¸Ä³É¹¦,ÇëÖØĞÂ½øĞĞµÇÂ½£¡');window.location='login.php'</script>";
+		echo "<script language=javascript>alert('ä¿®æ”¹æˆåŠŸ,è¯·é‡æ–°è¿›è¡Œç™»é™†ï¼');window.location='login.php'</script>";
 		exit();
 		}
 		else
@@ -27,7 +27,7 @@ if($rows["password"]==$_POST["password"])
 		{
 ?>
 		<script language="javascript">
-			alert("Ô­Ê¼ÃÜÂë²»ÕıÈ·,ÇëÖØĞÂÊäÈë")
+			alert("åŸå§‹å¯†ç ä¸æ­£ç¡®,è¯·é‡æ–°è¾“å…¥")
 			location.href="renpassword.php";
 		</script>
 		<?php
@@ -38,27 +38,27 @@ if($rows["password"]==$_POST["password"])
 <table cellpadding="3" cellspacing="1" border="0" width="100%" class="table" align=center>
   <form name="renpassword" method="post" action="">
     <tr> 
-      <th height=25 colspan=4 align="center" class="bg_tr">¸ü¸Ä¹ÜÀíÃÜÂë</th>
+      <th height=25 colspan=4 align="center" class="bg_tr">æ›´æ”¹ç®¡ç†å¯†ç </th>
     </tr>
     <tr> 
-      <td width="40%" align="right" class="td_bg">ÓÃ»§Ãû£º</td>
+      <td width="40%" align="right" class="td_bg">ç”¨æˆ·åï¼š</td>
       <td width="60%" class="td_bg"><?php echo $rows["username"] ?></td>
     </tr>
     <tr> 
-      <td align="right" class="td_bg">Ô­ÃÜÂë£º</td>
+      <td align="right" class="td_bg">åŸå¯†ç ï¼š</td>
       <td class="td_bg"><input name="password" type="password" id="password" size="20"></td>
     </tr>
     <tr> 
-      <td align="right" class="td_bg">ĞÂÃÜÂë£º</td>
+      <td align="right" class="td_bg">æ–°å¯†ç ï¼š</td>
       <td class="td_bg"><input name="password1" type="password" id="password1" size="20"></td>
     </tr>
     <tr> 
-      <td align="right" class="td_bg">È·ÈÏÃÜÂë£º</td>
+      <td align="right" class="td_bg">ç¡®è®¤å¯†ç ï¼š</td>
       <td class="td_bg"><input  name="password2" type="password" id="password2" size="20"></td>
     </tr>
     <tr> 
       <td colspan="2" align="center" class="td_bg"> 
-        <input class="button" onClick="return check();" type="submit" name="Submit" value="È·¶¨¸ü¸Ä">
+        <input class="button" onClick="return check();" type="submit" name="Submit" value="ç¡®å®šæ›´æ”¹">
       </td>
     </tr>
   </form>
@@ -78,24 +78,24 @@ function check()
 {
   if(checkspace(document.renpassword.password.value)) {
 	document.renpassword.password.focus();
-    alert("Ô­ÃÜÂë²»ÄÜÎª¿Õ£¡");
+    alert("åŸå¯†ç ä¸èƒ½ä¸ºç©ºï¼");
 	return false;
   }
   if(checkspace(document.renpassword.password1.value)) {
 	document.renpassword.password1.focus();
-    alert("ĞÂÃÜÂë²»ÄÜÎª¿Õ£¡");
+    alert("æ–°å¯†ç ä¸èƒ½ä¸ºç©ºï¼");
 	return false;
   }
     if(checkspace(document.renpassword.password2.value)) {
 	document.renpassword.password2.focus();
-    alert("È·ÈÏÃÜÂë²»ÄÜÎª¿Õ£¡");
+    alert("ç¡®è®¤å¯†ç ä¸èƒ½ä¸ºç©ºï¼");
 	return false;
   }
     if(document.renpassword.password1.value != document.renpassword.password2.value) {
 	document.renpassword.password1.focus();
 	document.renpassword.password1.value = '';
 	document.renpassword.password2.value = '';
-    alert("ĞÂÃÜÂëºÍÈ·ÈÏÃÜÂë²»ÏàÍ¬£¬ÇëÖØĞÂÊäÈë");
+    alert("æ–°å¯†ç å’Œç¡®è®¤å¯†ç ä¸ç›¸åŒï¼Œè¯·é‡æ–°è¾“å…¥");
 	return false;
   }
 	document.admininfo.submit();
