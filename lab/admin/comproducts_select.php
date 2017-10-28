@@ -1,0 +1,119 @@
+<?php
+include("../config.php");
+require_once('ly_check.php');
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Tenda实验室样机管理系统v0.1</title>
+<link rel="stylesheet" href="images/css.css" type="text/css">
+</head>
+<body>
+<table width="799" border="0" align="center" cellpadding="2" cellspacing="1" class="table">
+  <tr>
+    <td width="799" height="27" valign="top" bgcolor="#FFFFFF" class="bg_tr">&nbsp;后台管理&nbsp;&gt;&gt;&nbsp;资产查询</td>
+  <tr>
+    <td height="27" valign="top" bgcolor="#FFFFFF" class="bg_tr"><form id="form1" name="form1" method="post" action="" style="margin:0px; padding:0px;">
+        <table width="45%" height="42" border="0" align="center" cellpadding="0" cellspacing="0" class="bk">
+          <tr>
+            <td width="36%" align="center">
+              <select name="seltype" id="seltype">
+                <option value="code">编码</option>
+                <option value="product_name">存货名称</option>
+                <option value="model_name">规格型号</option>
+                <option value="position">库位</option>
+                <option value="mark">备注信息</option>
+              </select>            </td>
+            <td width="31%" align="center">
+              <input type="text" name="coun" id="coun" />            </td>
+            <td width="33%" align="center">
+            <input type="submit" name="button" id="button" value="查询" onClick="return q_cont();" />            </td>
+          </tr>
+        </table>
+    </form></td>  
+  </table>
+</td>
+  </tr>
+</table>
+<table width="799" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC" class="table" >
+      
+      <tr>
+        <td width="6%" height="35" align="center" bgcolor="#FFFFFF">序号</td>
+        <td width="11%" align="center" bgcolor="#FFFFFF">编码</td>
+        <td width="14%" align="center" bgcolor="#FFFFFF">存货名称</td>
+        <td width="16%" align="center" bgcolor="#FFFFFF">规格型号</td>
+        <td width="11%" align="center" bgcolor="#FFFFFF">数量</td>
+        <td width="16%" align="center" bgcolor="#FFFFFF">库位</td>
+        <td width="11%" align="center" bgcolor="#FFFFFF">备注</td>
+        <td width="15%" align="center" bgcolor="#FFFFFF">操作</td>
+      </tr>
+<?php
+	$pagesize=10;
+	$sql = "select * from comproducts where ".$_POST[seltype]." like ('%".$_POST[coun]."%')";
+	$rs=mysql_query($sql) or die("请输入查询条件!!!");
+	$recordcount=mysql_num_rows($rs);
+	$pagecount=($recordcount-1)/$pagesize+1;
+	$pagecount=(int)$pagecount;
+	$pageno=$_GET["pageno"];
+	if($pageno=="")
+	{
+		$pageno=1;
+	}
+	if($pageno<1)
+	{
+		$pageno=1;
+	}
+	if($pageno>$pagecount)
+	{
+		$pageno=$pagecount;
+	}
+	$startno=($pageno-1)*$pagesize;
+	$sql="select * from comproducts where ".$_POST[seltype]." like ('%".$_POST[coun]."%') order by id desc limit $startno,$pagesize";
+	$rs=mysql_query($sql);
+?>
+     <?php
+	while($rows=mysql_fetch_assoc($rs))
+	{
+	?>
+<tr align="center">
+<td class="td_bg" width="6%"><?php echo $rows["id"]?></td>
+<td class="td_bg" width="11%" height="26"><?php echo $rows["code"]?></td>
+<td class="td_bg" width="14%" height="26"><?php echo $rows["product_name"]?></td>
+<td class="td_bg" width="16%" height="26"><?php echo $rows["model_name"]?></td>
+<td width="11%" height="26" class="td_bg"><?php echo $rows["numbers"]?></td>
+<td width="16%" height="26" class="td_bg"><?php echo $rows["position"]?></td>
+<td width="11%" height="26" class="td_bg"><?php echo $rows["mark"]?></td>
+<td class="td_bg" width="15%">
+<a href="comproducts_update.php?id=<?php echo $rows[id] ?>" class="trlink">修改</a></td>
+</tr>
+	<?php
+	}
+?>
+	    <tr>
+      <th height="25" colspan="6" align="center" class="bg_tr">
+    <?php
+	if($pageno==1)
+	{
+	?>
+	首页 | 上一页 | <a href="?pageno=<?php echo $pageno+1?>">下一页</a> | <a href="?pageno=<?php echo $_POST[seltype]?>">末页</a>
+	<?php
+	}
+	else if($pageno==$pagecount)
+	{
+	?>
+	<a href="?pageno=1">首页</a> | <a href="?pageno=<?php echo $pageno-1?>">上一页</a> | 下一页 | 末页
+	<?php
+	}
+	else
+	{
+	?>
+	<a href="?pageno=1">首页</a> | <a href="?pageno=<?php echo $pageno-1?>">上一页</a> | <a href="?pageno=<?php echo $pageno+1?>" class="forumRowHighlight">下一页</a> | <a href="?pageno=<?php echo $pagecount?>">末页</a>
+	<?php
+	}
+?>
+	&nbsp;页次：<?php echo $pageno ?>/<?php echo $pagecount ?>页&nbsp;共有<?php echo $recordcount?>条信息 </th>
+	  </tr>
+</table>
+</body>
+</html>
