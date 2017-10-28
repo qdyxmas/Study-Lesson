@@ -1,3 +1,4 @@
-1��bugfreeĿ¼��Ҫ��¼���ο���bugfree�ܽ�
-2��python Ŀ¼��¼python�ڹ����е�Ӧ��
-3��Web Development ��Ҫ��¼ѧϰWebǰ��֪ʶ�ĵ�
+1、bugfree目录主要记录二次开发bugfree总结
+2、python 目录记录python在工作中的应用
+3、Web Development 主要记录学习Web前端知识心得
+4、lab目录主要使用php开发的一个简单的样机借机管理系统
