@@ -1,0 +1,21 @@
+linux command
+
+iwlist wlan0 scan
+is a very good one, however if you'll have lot's of WIFI AP around (like in the multi-floor buildings) - you'll get the following error message in result:
+
+wlan0    Failed to read scan data : Argument list too long
+in this case the only way to get MAC of your AP would be:
+
+sudo iw wlan0 scan | egrep "^BSS|SSID:" |grep -n1 <your AP name>
+as an output you'll get following:
+
+104-BSS 44:ce:7d:7b:e7:9e(on wlan0)
+105:    SSID: <your AP name>
+where 1st line would be the MAC and 2nd line would be your AP name
+
+on MacOSX similar information could be possible to obtain by executing:
+
+/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -s |grep <your AP name>
+as an output you'll get following:
+
+<your AP name> 44:ce:7d:7b:e7:9e -58  1       Y  -- WPA2(PSK/AES/AES) 
