@@ -1,0 +1,12 @@
+Q1:Error while obtaining UI hierarchy XML file: com.android.ddmlib.SyncExceptio:
+解决方法：
+1、adb root
+2、重新开启手机的开发者权限
+3、重新打开uiautomatorviewer.bat
+
+Q2:使用uiautomatorviewer.bat查看不了块里面的具体元素信息
+解决方法:
+1、打开cmd下运行以下命令
+adb shell uiautomator runtest AppiumBootstrap.jar -c io.a
+ppium.android.bootstrap.Bootstrap  -e disableAndroidWatchers false
+2、重新刷新uiautomatorviewer后一般就可以看见了
