@@ -1,0 +1,36 @@
+svn hooks设置
+root@kali:~# mkdir /var/svn
+root@kali:~# cd /var/svn/
+root@kali:/var/svn# svnadmin create /var/svn/autotest
+root@kali:/var/svn# cd /var/svn/autotest/
+
+root@kali:/var/svn/autotest# ls
+conf  db  format  hooks  locks  README.txt
+
+	db目录：就是所有版本控制的数据存放文件。
+	hooks目录：放置hook脚本文件的目录。
+	locks目录：用来放置subversion见艰苦锁定数据的目录，用来追踪存取文件库的客户端。
+	format文件：是一个文本文件，里面只放了一个整数，表示当前文件库配置的版本号。
+	conf目录：是这个仓库的配置文件（仓库的用户访问账号、权限等）。
+	
+	进入conf目录（该svn版本库配置文件）cd conf/
+	authz文件是权限控制文件
+		[/] 
+		* = rw 
+	passwd是帐号密码文件
+		username = password  //这里的username和password自己设置 
+	svnserve.conf SVN服务配置文件
+		anon-access = read 
+		auth-access = write 
+		password-db = passwd 
+		authz-db = authz 
+	
+然后再hooks中创建post-commit钩子文件，里面是要执行的shell脚本(注意不是post-commit.tmpl)
+cd hooks/
+vi post-commit
+#!/bin/bash
+echo "test" >>/tmp/log
+chmod +x post-commit
+
+#
+最后使用windows测试每次commit后会向/tmp/log文件中打印日志
