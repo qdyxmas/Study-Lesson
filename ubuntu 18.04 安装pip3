@@ -1,0 +1,19 @@
+    1  ls
+    2  python3
+    3  pip3
+    4  sudo apt install build-essential python3-dev  python3-setuptools
+    5  sudo apt install python3-pip
+    6  sudo apt-get install python3-pip
+    7  E: Unable to locate package python3-pip
+    8  sudo apt-get update
+    9  curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | sudo python3
+   10  curl http://python-distribute.org/distribute_setup.py | sudo python3
+   11  sudo python -m pip install --upgrade --force-reinstall pip
+   12  python
+   13  apt-get install python3
+   14  apt-get install python
+   15  python3
+   16  pip3
+   17  apt install python3-pip
+   18  pip3 --help
+   19  history 
