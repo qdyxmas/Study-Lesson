@@ -1,0 +1,6 @@
+Q：centos7 虚拟机共享文件夹显示不了？
+A:vmware-hgfsclient
+  可以查看你的共享文件夹，但是不会显示出来
+  su /usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs -o subtype=vmhgfs-fuse,allow_other
+  cd /mnt/hgfs
+  ls
